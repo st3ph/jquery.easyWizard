@@ -1,0 +1,39 @@
+<html>
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js" type="text/javascript"></script>
+		<script src="../lib/jquery.easyWizard.js" type="text/javascript"></script>
+
+		<script language="javascript">
+			$(function() {
+				$('#pagerMe').easyWizard();
+				//$('#pagerMe').easyWizard('goToStep', 3);
+			});
+		</script>
+
+		<style>
+			#pagerMe {width:500px;min-height:200px;border:1px solid #ccc}
+			#pagerMe .step {
+				z-webkit-transition: all 1s ease-in-out;
+				z-moz-transition: all 1s ease-in-out;
+				z-o-transition: all 1s ease-in-out;
+				ztransition: all 1s ease-in-out;
+			}
+		</style>
+	</head>
+	<body>
+		<form id="pagerMe">
+			<section class="step">
+				<h2>Page 1</h2>
+			</section>
+			<section class="step">
+				<h2>Page 2</h2>
+			</section>
+			<section class="step">
+				<h2>Page 3</h2>
+			</section>
+			<section class="step">
+				<h2>Page 4</h2>
+			</section>
+		</form>
+	</body>
+</html>
