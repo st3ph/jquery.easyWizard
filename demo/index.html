@@ -5,13 +5,13 @@
 
 		<script language="javascript">
 			$(function() {
-				$('#pagerMe').easyWizard();
+				$('#myWizard').easyWizard();
 				//$('#pagerMe').easyWizard('goToStep', 3);
 			});
 		</script>
 
 		<style>
-			#pagerMe {width:600px;border:1px solid #ccc}
+			#myWizard {width:600px;border:1px solid #ccc}
 
 			.easyWizardSteps {list-style:none;width:100%;overflow:hidden;margin:0;padding:0;border-bottom:1px solid #ccc}
 			.easyWizardSteps li {font-size:18px;display:inline-block;padding:10px;color:#B0B1B3;margin-right:20px;}
@@ -22,21 +22,37 @@
 			.easyWizardButtons button, .easyWizardButtons .submit {padding:5px 10px;color:white;background:#0000A9;border:none;cursor:pointer}
 			.easyWizardButtons .prev {float:left}
 			.easyWizardButtons .next, .easyWizardButtons .submit {float:right}
+
+			form label {display:block}
 		</style>
 	</head>
 	<body>
-		<form id="pagerMe">
+		<form id="myWizard" type="get" action="">
 			<section class="step" data-step-title="The first">
 				<h2>Page 1</h2>
+				<div class="input">
+					<label>Test a required field</label>
+					<input type="text" name="input1" required title="Field required !" />
+				</div>
+				<div class="input">
+					<label>Test an email field</label>
+					<input type="email" name="input2" required title="Invalid email !" />
+				</div>
 			</section>
 			<section class="step" data-step-title="The second">
 				<h2>Page 2</h2>
+				<div class="input">
+					<label>Test a textarea</label>
+					<textarea name="input1" rows="5" cols="50"></textarea>
+				</div>
 			</section>
 			<section class="step" data-step-title="The third">
 				<h2>Page 3</h2>
+				<p>Nothing Here but...</p>
 			</section>
 			<section class="step" data-step-title="The fourth">
 				<h2>Page 4</h2>
+				<p>...now you can submit the form and see what happen =)</p>
 			</section>
 		</form>
 	</body>
