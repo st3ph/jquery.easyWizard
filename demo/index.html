@@ -22,7 +22,7 @@
 							<li><a href="#html">HTML</a></li>
 							<li><a href="#css">CSS</a></li>
 							<li><a href="#javascript">Javascript</a></li>
-							<li><a href="#demo">Demo</a></li>
+							<li><a href="#demos">Demos</a></li>
 							<li><a href="#options">Options</a></li>
 							<li><a href="#extra">Extra</a></li>
 							<li><a href="https://github.com/st3ph/jquery.easyWizard"><span class="badge badge-success">Download</span></a></li>
@@ -126,10 +126,12 @@ $('#myWizard').easyWizard();
 </pre>
 			</section>
 
-			<section id="demo">
-				<h2>Demo</h2>
+			<section id="demos">
+				<h2>Demos</h2>
+
+				<h3>Basic exemple</h3>
 				<p class="well">
-					Basic exemple with the same code above<br />
+					Using the same code above<br />
 					We just add some class to the buttons to make them nicer (thanks Twitter bootstrap)
 				</p>
 				<form id="myWizard" type="get" action="" class="form-horizontal">
@@ -170,6 +172,121 @@ $('#myWizard').easyWizard();
 						</div>
 					</section>
 				</form>
+
+				<h3>Using callbacks</h3>
+<pre class="javascript">
+$('#myWizard2').easyWizard({
+	buttonsClass: 'btn',
+	submitButtonClass: 'btn btn-info',
+	before: function(wizardObj, currentStepObj, nextStepObj) {
+		alert('Hello, I\'am the before callback');
+	},
+	after: function(wizardObj, prevStepObj, currentStepObj) {
+		alert('Hello, I\'am the after callback');
+	},
+	beforeSubmit: function(wizardObj) {
+		alert('Hello, I\'am the beforeSubmit callback');
+	}
+});
+</pre>
+				<form id="myWizard2" type="get" action="" class="form-horizontal">
+					<section class="step" data-step-title="page">
+						<div class="control-group">
+							<label class="control-label" for="inputEmail">Email</label>
+							<div class="controls">
+								<input type="text" id="inputEmail" placeholder="Email" class="input-xlarge" title="Email is required !" required />
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="inputPassword">Password</label>
+							<div class="controls">
+								<input type="password" id="inputPassword" placeholder="Password" class="input-xlarge" />
+							</div>
+						</div>
+					</section>
+					<section class="step" data-step-title="page">
+						<div class="control-group">
+							<label class="control-label" for="inputUsername">Username</label>
+								<div class="controls">
+								<input type="text" id="inputUsername" placeholder="Username" class="input-xlarge" />
+							</div>
+						</div>
+					</section>
+					<section class="step" data-step-title="page">
+						<div class="control-group">
+							<label class="control-label" for="inputFirstname">Firstname</label>
+								<div class="controls">
+								<input type="text" id="inputFirstname" placeholder="Firstname" class="input-xlarge">
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="inputCity">City</label>
+								<div class="controls">
+								<input type="text" id="inputCity" placeholder="City" class="input-xlarge">
+							</div>
+						</div>
+					</section>
+				</form>
+
+				<h3>Using own buttons</h3>
+<pre class="javascript">
+$('#myWizard3').easyWizard({
+	showSteps: false,
+	showButtons: false,
+	submitButton: false
+});
+$('#myWizard3Pager .previous a').bind('click', function(e) {
+	e.preventDefault();
+	$('#myWizard3').easyWizard('prevStep');
+});
+$('#myWizard3Pager .page a').bind('click', function(e) {
+	e.preventDefault();
+	$('#myWizard3').easyWizard('goToStep', $(this).attr('rel'));
+});
+$('#myWizard3Pager .next a').bind('click', function(e) {
+	e.preventDefault();
+	$('#myWizard3').easyWizard('nextStep');
+});
+</pre>
+				<div id="myWizard3">
+					<section class="step" data-step-title="page">
+						<div class="hero-unit">
+							<h1>Hey !</h1>
+							<p>Discover my awesome product</p>
+							<p>
+								<a class="btn btn-primary btn-large">
+									Read more
+								</a>
+							</p>
+						</div>
+					</section>
+					<section class="step" data-step-title="page">
+						<div class="hero-unit">
+							<h1>Here it is</h1>
+							<p>Soon this product for you (and only you)</p>
+						</div>
+					</section>
+					<section class="step" data-step-title="page">
+						<div class="hero-unit">
+							<h1>Awesome !</h1>
+							<p>This product is now ready to use</p>
+							<p>
+								<a class="btn btn-primary btn-large">
+									Get it !
+								</a>
+							</p>
+						</div>
+					</section>
+				</div>
+				<div id="myWizard3Pager" class="pagination pagination-centered">
+					<ul>
+						<li class="previous"><a href="#">&larr; Previous</a></li>
+						<li class="page"><a href="#" rel="1">1</a></li>
+						<li class="page"><a href="#" rel="2">2</a></li>
+						<li class="page"><a href="#" rel="3">3</a></li>
+						<li class="next"><a href="#">Next &rarr;</a></li>
+					</ul>
+				</div>
 			</section>
 
 			<section id="options">
