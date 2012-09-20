@@ -1,4 +1,5 @@
 (function( $ ) {
+	var arrSettings = new Array();
 	var easyWizardMethods = {
 		init : function(options) {
 			var settings = $.extend( {
@@ -28,8 +29,11 @@
 				}
 			}, options);
 
+			arrSettings[this.index()] = settings;
+
 			return this.each(function() {
 				thisSettings = settings;
+
 				$this = $(this); // Wizard Obj
 				$this.addClass('easyWizardElement');
 				$steps = $this.find('.'+thisSettings.stepClassName);
@@ -107,6 +111,7 @@
 			});
 		},
 		prevStep : function( ) {
+			thisSettings = arrSettings[this.index()];
 			$activeStep = this.find('.active');
 			if($activeStep.prev('.'+thisSettings.stepClassName).length) {
 				prevStep = parseInt($activeStep.attr('data-step')) - 1;
@@ -114,6 +119,7 @@
 			}
 		},
 		nextStep : function( ) {
+			thisSettings = arrSettings[this.index()];
 			$activeStep = this.find('.active');
 			if($activeStep.next('.'+thisSettings.stepClassName).length) {
 				nextStep = parseInt($activeStep.attr('data-step')) + 1;
@@ -121,6 +127,8 @@
 			}
 		},
 		goToStep : function(step) {
+			thisSettings = arrSettings[this.index()];
+
 			$activeStep = this.find('.active');
 			$nextStep = this.find('.'+thisSettings.stepClassName+'[data-step="'+step+'"]');
 			currentStep = $activeStep.attr('data-step');
@@ -147,14 +155,12 @@
 			});
 
 			// Defines steps
-			if(thisSettings.showSteps) {
-				$('.easyWizardSteps .current').removeClass('current');
-				$('.easyWizardSteps').find('li[data-step="'+step+'"]').addClass('current');
-			}
+			this.find('.easyWizardSteps .current').removeClass('current');
+			this.find('.easyWizardSteps li[data-step="'+step+'"]').addClass('current');
 
 			// Define buttons
-			if(thisSettings.showButtons) {
-				$paginationBloc = this.find('.easyWizardButtons');
+			$paginationBloc = this.find('.easyWizardButtons');
+			if($paginationBloc.length) {
 				if(step == 1) {
 					$paginationBloc.find('.prev, .submit').hide();
 					$paginationBloc.find('.next').show();
