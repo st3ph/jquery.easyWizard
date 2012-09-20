@@ -366,10 +366,10 @@ $('#myWizard3Pager .next a').bind('click', function(e) {
 							<td class="muted">function</td>
 							<td>
 								before callback<br />
-								call just before the slide effect<br />
+								called just before the slide effect<br />
 								params : <span class="muted">(in right order)</span><br />
-								&nbsp;&nbsp;&nbsp;&nbsp;wizardObj : object of the wizard
-								&nbsp;&nbsp;&nbsp;&nbsp;currentStepObj : object of the current step
+								&nbsp;&nbsp;&nbsp;&nbsp;wizardObj : object of the wizard<br />
+								&nbsp;&nbsp;&nbsp;&nbsp;currentStepObj : object of the current step<br />
 								&nbsp;&nbsp;&nbsp;&nbsp;nextStepObj : object of the next step
 							</td>
 						</tr>
@@ -378,10 +378,10 @@ $('#myWizard3Pager .next a').bind('click', function(e) {
 							<td class="muted">function</td>
 							<td>
 								after callback<br />
-								call just after the slide effect<br />
+								called just after the slide effect<br />
 								params : <span class="muted">(in right order)</span><br />
-								&nbsp;&nbsp;&nbsp;&nbsp;wizardObj : object of the wizard
-								&nbsp;&nbsp;&nbsp;&nbsp;prevStepObj : object of the previous step
+								&nbsp;&nbsp;&nbsp;&nbsp;wizardObj : object of the wizard<br />
+								&nbsp;&nbsp;&nbsp;&nbsp;prevStepObj : object of the previous step<br />
 								&nbsp;&nbsp;&nbsp;&nbsp;currentStepObj : object of the current step
 							</td>
 						</tr>
@@ -390,7 +390,7 @@ $('#myWizard3Pager .next a').bind('click', function(e) {
 							<td class="muted">function</td>
 							<td>
 								beforeSubmit callback<br />
-								call just before the form submit (if there is a form)<br />
+								called just before the form submit (if there is a form)<br />
 								params : <br />
 								&nbsp;&nbsp;&nbsp;&nbsp;wizardObj : object of the wizard<br />
 								default : <span class="muted">(check for HTML5 form validation error, and slide to the error if found)</span><br />
