@@ -31,6 +31,7 @@
 			return this.each(function() {
 				thisSettings = settings;
 				$this = $(this); // Wizard Obj
+				$this.addClass('easyWizardElement');
 				$steps = $this.find('.'+thisSettings.stepClassName);
 				thisSettings.steps = $steps.length;
 				thisSettings.width = $(this).width();
@@ -79,13 +80,15 @@
 						$paginationBloc.find('.prev').bind('click.easyWizard', function(e) {
 							e.preventDefault();
 
-							easyWizardMethods.prevStep.apply($this);
+							$wizard = $(this).parents('.easyWizardElement');
+							easyWizardMethods.prevStep.apply($wizard);
 						});
 
 						$paginationBloc.find('.next').bind('click.easyWizard', function(e) {
 							e.preventDefault();
 
-							easyWizardMethods.nextStep.apply($this);
+							$wizard = $(this).parents('.easyWizardElement');
+							easyWizardMethods.nextStep.apply($wizard);
 						});
 						$this.append($paginationBloc);
 					}
@@ -93,8 +96,9 @@
 					$formObj = $this.is('form')?$this:$(this).find('form');
 
 					// beforeSubmit Callback
-					$this.find('[type="submit"]').bind('click', function(e) {
-						thisSettings.beforeSubmit($this);
+					$this.find('[type="submit"]').bind('click.easyWizard', function(e) {
+						$wizard = $(this).parents('.easyWizardElement');
+						thisSettings.beforeSubmit($wizard);
 						return true;
 					});
 				}else if(thisSettings.debug) {

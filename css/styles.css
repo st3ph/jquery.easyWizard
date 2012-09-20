@@ -40,6 +40,8 @@ header p {
 .easyWizardButtons .prev {float:left}
 .easyWizardButtons .next, .easyWizardButtons .submit {float:right}
 
+#myWizard3Pager {margin-top:-10px}
+
 form label {display:block}
 
 footer {
