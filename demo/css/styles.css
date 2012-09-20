@@ -47,7 +47,7 @@ form label {display:block}
 footer {
 	text-align:center;
 	background:#08c;
-	border-top:2px dotted #666;
+	border-top:1px dashed #fff;
 	padding:15px 0;
 	margin-top:20px;
 	color:#fff;
