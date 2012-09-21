@@ -1,3 +1,13 @@
+/* ========================================================
+ * easyWizard v1
+ * http://st3ph.github.com/jquery.easyWizard
+ * ========================================================
+ * Copyright 2012 Stéphane Litou
+ *
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://www.opensource.org/licenses/mit-license.php
+ * http://www.opensource.org/licenses/GPL-2.0
+ * ======================================================== */
 (function( $ ) {
 	var arrSettings = new Array();
 	var easyWizardMethods = {
