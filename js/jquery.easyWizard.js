@@ -123,7 +123,7 @@
 		prevStep : function( ) {
 			thisSettings = arrSettings[this.index()];
 			$activeStep = this.find('.active');
-			if($activeStep.prev('.'+thisSettings.stepClassName).length) {
+			if($activeStep.prev('.'+thisSettings.stepClassName).length) {				
 				prevStep = parseInt($activeStep.attr('data-step')) - 1;
 				easyWizardMethods.goToStep.call(this, prevStep);
 			}
@@ -138,10 +138,13 @@
 		},
 		goToStep : function(step) {
 			thisSettings = arrSettings[this.index()];
-
+			
 			$activeStep = this.find('.active');
 			$nextStep = this.find('.'+thisSettings.stepClassName+'[data-step="'+step+'"]');
 			currentStep = $activeStep.attr('data-step');
+
+			// Prevent sliding same step
+			if (currentStep == step) return;
 
 			// Before callBack
 			thisSettings.before(this, $activeStep, $nextStep);
@@ -154,14 +157,14 @@
 			}
 
 			// Slide !
-			$activeStep.animate({
-				height: '1px'
-			}).removeClass('active');
+			$activeStep.removeClass('active');
 
 			$nextStep.css('height', '').addClass('active');
 
-			this.find('.easyWizardWrapper').animate({
+			this.find('.easyWizardWrapper').stop(true, true).animate({
 				'margin-left': thisSettings.width * (step - 1) * -1
+			}, function () {
+				$activeStep.css({ height: '1px' })
 			});
 
 			// Defines steps
