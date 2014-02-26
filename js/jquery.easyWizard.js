@@ -122,15 +122,15 @@
 		},
 		prevStep : function( ) {
 			thisSettings = arrSettings[this.index()];
-			$activeStep = this.find('.active');
+			$activeStep = this.find('.'+ thisSettings.stepClassName +'.active');
 			if($activeStep.prev('.'+thisSettings.stepClassName).length) {				
 				prevStep = parseInt($activeStep.attr('data-step')) - 1;
 				easyWizardMethods.goToStep.call(this, prevStep);
 			}
 		},
 		nextStep : function( ) {
-			thisSettings = arrSettings[this.index()];
-			$activeStep = this.find('.active');
+			thisSettings = arrSettings[this.index()];			
+			$activeStep = this.find('.'+ thisSettings.stepClassName +'.active');
 			if($activeStep.next('.'+thisSettings.stepClassName).length) {
 				nextStep = parseInt($activeStep.attr('data-step')) + 1;
 				easyWizardMethods.goToStep.call(this, nextStep);
@@ -138,8 +138,7 @@
 		},
 		goToStep : function(step) {
 			thisSettings = arrSettings[this.index()];
-			
-			$activeStep = this.find('.active');
+			$activeStep = this.find('.'+ thisSettings.stepClassName +'.active');
 			$nextStep = this.find('.'+thisSettings.stepClassName+'[data-step="'+step+'"]');
 			currentStep = $activeStep.attr('data-step');
 
@@ -181,6 +180,9 @@
 					$paginationBloc.find('.submit').hide();
 					$paginationBloc.find('.prev, .next').show();
 				}else {
+					if($nextStep.prev('.'+thisSettings.stepClassName).length) { // If there is a previous step, must be always the case but... you know =)
+						$paginationBloc.find('.prev').show();
+					}
 					$paginationBloc.find('.next').hide();
 					$paginationBloc.find('.submit').show();
 				}
