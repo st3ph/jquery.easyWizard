@@ -370,7 +370,8 @@ $('#myWizard3Pager .next a').bind('click', function(e) {
 								params : <span class="muted">(in right order)</span><br />
 								&nbsp;&nbsp;&nbsp;&nbsp;wizardObj : object of the wizard<br />
 								&nbsp;&nbsp;&nbsp;&nbsp;currentStepObj : object of the current step<br />
-								&nbsp;&nbsp;&nbsp;&nbsp;nextStepObj : object of the next step
+								&nbsp;&nbsp;&nbsp;&nbsp;nextStepObj : object of the next step<br />
+								return : return false to stay in current step (for form validation for example)
 							</td>
 						</tr>
 						<tr>
@@ -393,7 +394,8 @@ $('#myWizard3Pager .next a').bind('click', function(e) {
 								called just before the form submit (if there is a form)<br />
 								params : <br />
 								&nbsp;&nbsp;&nbsp;&nbsp;wizardObj : object of the wizard<br />
-								default : <span class="muted">(check for HTML5 form validation error, and slide to the error if found)</span><br />
+								return : return false to stay in current step (for form validation for example)<br />
+								default : <span class="muted">check for HTML5 form validation error, and slide to the error if found</span><br />
 <pre class="javascript">
 function(wizardObj) {
 	wizardObj.find('input, textarea').each(function() {
