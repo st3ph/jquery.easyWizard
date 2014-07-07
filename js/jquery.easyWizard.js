@@ -9,7 +9,7 @@
  * http://www.opensource.org/licenses/GPL-2.0
  * ======================================================== */
 (function( $ ) {
-	var arrSettings = new Array();
+	var arrSettings = [];
 	var easyWizardMethods = {
 		init : function(options) {
 			var settings = $.extend( {
@@ -71,6 +71,8 @@
 
 						if(!index) {
 							$(this).addClass('active').css('height', '');
+						}else {
+							$(this).find('input').attr('tabindex', '-1');
 						}
 
 						stepText = thisSettings.stepsText.replace('{n}', '<span>'+step+'</span>');
@@ -112,7 +114,10 @@
 					// beforeSubmit Callback
 					$this.find('[type="submit"]').bind('click.easyWizard', function(e) {
 						$wizard = $(this).parents('.easyWizardElement');
-						thisSettings.beforeSubmit($wizard);
+						var beforeSubmitValue = thisSettings.beforeSubmit($wizard);
+						if(beforeSubmitValue === false) {
+							return false;
+						}
 						return true;
 					});
 				}else if(thisSettings.debug) {
@@ -146,7 +151,10 @@
 			if (currentStep == step) return;
 
 			// Before callBack
-			thisSettings.before(this, $activeStep, $nextStep);
+			var beforeValue = thisSettings.before(this, $activeStep, $nextStep);
+			if(beforeValue === false) {
+				return false;
+			}
 
 			// Define direction for sliding
 			if(currentStep < step) { // forward
@@ -157,13 +165,15 @@
 
 			// Slide !
 			$activeStep.removeClass('active');
+			$activeStep.find('input').attr('tabindex', '-1');
 
 			$nextStep.css('height', '').addClass('active');
+			$nextStep.find('input').removeAttr('tabindex');
 
 			this.find('.easyWizardWrapper').stop(true, true).animate({
 				'margin-left': thisSettings.width * (step - 1) * -1
 			}, function () {
-				$activeStep.css({ height: '1px' })
+				$activeStep.css({ height: '1px' });
 			});
 
 			// Defines steps
