@@ -1,6 +1,6 @@
 {
   "name": "jquery-easy-wizard",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "main": ".lib/jquery.easyWizard.js",
   "dependencies": {
     "jquery": ">=1.8"
