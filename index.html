@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>easyWizard :: Easiest way to make wizard :: powered by jQuery</title>
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/jquery.snippet.min.css" rel="stylesheet">
+		<link href="css/styles.css" rel="stylesheet">
+	</head>
+	<body data-spy="scroll" data-target=".navbar" data-offset="150">
+		<div id="wrapper" class="span10">
+			<header>
+				<h1>easyWizard.JS</h1>
+				<p class="lead muted">jQuery plugin to create wizard in no time</p>
+			</header>
+
+			<div id="navbar" class="row">
+				<div class="navbar span10">
+					<div class="navbar-inner">
+						<ul class="nav">
+							<li class="active"><a href="#intro">Intro</a></li>
+							<li><a href="#gettingstarted">Getting Started</a></li>
+							<li><a href="#html">HTML</a></li>
+							<li><a href="#css">CSS</a></li>
+							<li><a href="#javascript">Javascript</a></li>
+							<li><a href="#demos">Demos</a></li>
+							<li><a href="#options">Options</a></li>
+							<li><a href="#extra">Extra</a></li>
+							<li><a href="https://github.com/st3ph/jquery.easyWizard"><span class="badge badge-success">Download</span></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<section id="intro">
+				<h2>Introduction</h2>
+				<p class="well">
+					There is already some jQuery plugins to make wizards, but none to fit my needs and/or with a slide effect.<br />
+					So I decide to build my own and share it.<br />
+					easyWizard is pretty lightweight (5kb uncompressed), have some usefull options and is compatible with <img src="img/chrome-16.png" alt="Chrome" /> Chrome, <img src="img/firefox-16.png" alt="Firefox" /> Firefox, <img src="img/opera-16.png" alt="Opera" /> Opera and <img src="img/safari-16.png" alt="Safari" /> Safari.<br />
+					I tried to make it simple to use and have some usefull options and hope it will be usefull to some people.
+				</p>
+			</section>
+
+			<section id="gettingstarted">
+				<h2>Getting Started</h2>
+				<p class="well">
+					Download the code <a href="https://github.com/st3ph/jquery.easyWizard">here <i class="icon-download-alt"></i></a> (github repo)</br />
+					Then, include <a href="http://jquery.com/download">jQuery</a> and the jquery.easyWizard.js code you just download into your page like this :
+				</p>
+<pre class="html">
+&lt;script src="http://code.jquery.com/jquery-latest.js"&gt;&lt;/script&gt;
+&lt;script src="jquery.easyWizard.js">&lt;/script&gt;
+</pre>
+			</section>
+
+			<section id="html">
+				<h2>HTML</h2>
+				<p class="well">
+					This is a little exemple, you can make a wizard with far less elements but I need them to keep is nice with twitter bootstrap.<br />
+					The minimum is a main container and some sub container to separate each steps, yeah that's all.
+				</p>
+<pre class="html">
+&lt;form id="myWizard" type="get" action="" class="form-horizontal"&gt;
+	&lt;section class="step" data-step-title="The first"&gt;
+		&lt;div class="control-group"&gt;
+			&lt;label class="control-label" for="inputEmail"&gt;Email&lt;/label&gt;
+			&lt;div class="controls"&gt;
+				&lt;input type="text" id="inputEmail" placeholder="Email" class="input-xlarge" title="Email is required !" required &gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+		&lt;div class="control-group"&gt;
+			&lt;label class="control-label" for="inputPassword"&gt;Password&lt;/label&gt;
+			&lt;div class="controls"&gt;
+				&lt;input type="password" id="inputPassword" placeholder="Password" class="input-xlarge"&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/section&gt;
+	&lt;section class="step" data-step-title="The second"&gt;
+		&lt;div class="control-group"&gt;
+			&lt;label class="control-label" for="inputUsername"&gt;Username&lt;/label&gt;
+				&lt;div class="controls"&gt;
+				&lt;input type="text" id="inputUsername" placeholder="Username" class="input-xlarge"&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/section&gt;
+	&lt;section class="step" data-step-title="The third"&gt;
+		&lt;div class="control-group"&gt;
+			&lt;label class="control-label" for="inputFirstname"&gt;Firstname&lt;/label&gt;
+				&lt;div class="controls"&gt;
+				&lt;input type="text" id="inputFirstname" placeholder="Firstname" class="input-xlarge"&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+		&lt;div class="control-group"&gt;
+			&lt;label class="control-label" for="inputCity"&gt;City&lt;/label&gt;
+				&lt;div class="controls"&gt;
+				&lt;input type="text" id="inputCity" placeholder="City" class="input-xlarge"&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/section&gt;
+&lt;/form&gt;
+</pre>
+			</section>
+
+			<section id="css">
+				<h2>CSS</h2>
+				<p class="well">
+					You only need css to personnalize the buttons and the "Navigation Bar" on top (if you enable those, offcourse). Anyway, here is a small exemple :
+				</p>
+<pre class="css">
+.easyWizardSteps {list-style:none;width:100%;overflow:hidden;margin:0;padding:0;border-bottom:1px solid #ccc;margin-bottom:20px}
+.easyWizardSteps li {font-size:18px;display:inline-block;padding:10px;color:#B0B1B3;margin-right:20px;}
+.easyWizardSteps li span {font-size:24px}
+.easyWizardSteps li.current {color:#000}
+
+.easyWizardButtons {overflow:hidden;padding:10px;}
+.easyWizardButtons button, .easyWizardButtons .submit {cursor:pointer}
+.easyWizardButtons .prev {float:left}
+.easyWizardButtons .next, .easyWizardButtons .submit {float:right}
+</pre>
+			</section>
+
+			<section id="javascript">
+				<h2>Javascript</h2>
+<pre class="javascript">
+$('#myWizard').easyWizard();
+</pre>
+			</section>
+
+			<section id="demos">
+				<h2>Demos</h2>
+
+				<h3>Basic exemple</h3>
+				<p class="well">
+					Using the same code above<br />
+					We just add some class to the buttons to make them nicer (thanks Twitter bootstrap)
+				</p>
+				<form id="myWizard" type="get" action="" class="form-horizontal">
+					<section class="step" data-step-title="First step">
+						<div class="control-group">
+							<label class="control-label" for="inputEmail">Email</label>
+							<div class="controls">
+								<input type="text" id="inputEmail" placeholder="Email" class="input-xlarge" title="Email is required !" required />
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="inputPassword">Password</label>
+							<div class="controls">
+								<input type="password" id="inputPassword" placeholder="Password" class="input-xlarge" />
+							</div>
+						</div>
+					</section>
+					<section class="step" data-step-title="Second step">
+						<div class="control-group">
+							<label class="control-label" for="inputUsername">Username</label>
+								<div class="controls">
+								<input type="text" id="inputUsername" placeholder="Username" class="input-xlarge" />
+							</div>
+						</div>
+					</section>
+					<section class="step" data-step-title="Third step">
+						<div class="control-group">
+							<label class="control-label" for="inputFirstname">Firstname</label>
+								<div class="controls">
+								<input type="text" id="inputFirstname" placeholder="Firstname" class="input-xlarge">
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="inputCity">City</label>
+								<div class="controls">
+								<input type="text" id="inputCity" placeholder="City" class="input-xlarge">
+							</div>
+						</div>
+					</section>
+				</form>
+
+				<h3>Using callbacks</h3>
+<pre class="javascript">
+$('#myWizard2').easyWizard({
+	buttonsClass: 'btn',
+	submitButtonClass: 'btn btn-info',
+	before: function(wizardObj, currentStepObj, nextStepObj) {
+		alert('Hello, I\'am the before callback');
+	},
+	after: function(wizardObj, prevStepObj, currentStepObj) {
+		alert('Hello, I\'am the after callback');
+	},
+	beforeSubmit: function(wizardObj) {
+		alert('Hello, I\'am the beforeSubmit callback');
+	}
+});
+</pre>
+				<form id="myWizard2" type="get" action="" class="form-horizontal">
+					<section class="step" data-step-title="page">
+						<div class="control-group">
+							<label class="control-label" for="inputEmail">Email</label>
+							<div class="controls">
+								<input type="text" id="inputEmail" placeholder="Email" class="input-xlarge" title="Email is required !" required />
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="inputPassword">Password</label>
+							<div class="controls">
+								<input type="password" id="inputPassword" placeholder="Password" class="input-xlarge" />
+							</div>
+						</div>
+					</section>
+					<section class="step" data-step-title="page">
+						<div class="control-group">
+							<label class="control-label" for="inputUsername">Username</label>
+								<div class="controls">
+								<input type="text" id="inputUsername" placeholder="Username" class="input-xlarge" />
+							</div>
+						</div>
+					</section>
+					<section class="step" data-step-title="page">
+						<div class="control-group">
+							<label class="control-label" for="inputFirstname">Firstname</label>
+								<div class="controls">
+								<input type="text" id="inputFirstname" placeholder="Firstname" class="input-xlarge">
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="inputCity">City</label>
+								<div class="controls">
+								<input type="text" id="inputCity" placeholder="City" class="input-xlarge">
+							</div>
+						</div>
+					</section>
+				</form>
+
+				<h3>Using own buttons</h3>
+<pre class="javascript">
+$('#myWizard3').easyWizard({
+	showSteps: false,
+	showButtons: false,
+	submitButton: false
+});
+$('#myWizard3Pager .previous a').bind('click', function(e) {
+	e.preventDefault();
+	$('#myWizard3').easyWizard('prevStep');
+});
+$('#myWizard3Pager .page a').bind('click', function(e) {
+	e.preventDefault();
+	$('#myWizard3').easyWizard('goToStep', $(this).attr('rel'));
+});
+$('#myWizard3Pager .next a').bind('click', function(e) {
+	e.preventDefault();
+	$('#myWizard3').easyWizard('nextStep');
+});
+</pre>
+				<div id="myWizard3">
+					<section class="step" data-step-title="page">
+						<div class="hero-unit">
+							<h1>Hey !</h1>
+							<p>Discover my awesome product</p>
+							<p>
+								<a class="btn btn-primary btn-large">
+									Read more
+								</a>
+							</p>
+						</div>
+					</section>
+					<section class="step" data-step-title="page">
+						<div class="hero-unit">
+							<h1>Here it is</h1>
+							<p>Soon this product for you (and only you)</p>
+						</div>
+					</section>
+					<section class="step" data-step-title="page">
+						<div class="hero-unit">
+							<h1>Awesome !</h1>
+							<p>This product is now ready to use</p>
+							<p>
+								<a class="btn btn-primary btn-large">
+									Get it !
+								</a>
+							</p>
+						</div>
+					</section>
+				</div>
+				<div id="myWizard3Pager" class="pagination pagination-centered">
+					<ul>
+						<li class="previous"><a href="#">&larr; Previous</a></li>
+						<li class="page"><a href="#" rel="1">1</a></li>
+						<li class="page"><a href="#" rel="2">2</a></li>
+						<li class="page"><a href="#" rel="3">3</a></li>
+						<li class="next"><a href="#">Next &rarr;</a></li>
+					</ul>
+				</div>
+			</section>
+
+			<section id="options">
+				<h2>Options</h2>
+				<p class="well">
+					Yeah cause it's easy, but there is some options to make it your own
+				</p>
+				<table class="table">
+					<thead>
+						<th>Option</th>
+						<th>Type</th>
+						<th>Description</th>
+					</thead>
+					<tbody>
+						<tr>
+							<td>stepClassName</td>
+							<td class="muted">string</td>
+							<td>class of the element to separate each step (default : 'step')</td>
+						</tr>
+						<tr>
+							<td>showStep</td>
+							<td class="muted">boolean</td>
+							<td>display the steps top nav or not (default : true)</td>
+						</tr>
+						<tr>
+							<td>stepsText</td>
+							<td class="muted">string</td>
+							<td>
+								Usefull to overide the step nav<br />
+								{n} will be replaced by the step's number<br />
+								{t} will be replaced by the step's title defined by the "data-step-title" attribute of the element<br />
+								(default : '{n}. {t}')
+							</td>
+						</tr>
+						<tr>
+							<td>showButtons</td>
+							<td class="muted">boolean</td>
+							<td>display the nav buttons or not (default : true)</td>
+						</tr>
+						<tr>
+							<td>buttonsClass</td>
+							<td class="muted">string</td>
+							<td>class of the buttons (default : '')</td>
+						</tr>
+						<tr>
+							<td>prevButton</td>
+							<td class="muted">string</td>
+							<td>text for the "previous" button (default : '< Back')</td>
+						</tr>
+						<tr>
+							<td>nextButton</td>
+							<td class="muted">string</td>
+							<td>text for the "next" button (default : 'Next >')</td>
+						</tr>
+						<tr>
+							<td>submitButton</td>
+							<td class="muted">boolean</td>
+							<td>add a submit button in the last step or not (default : true)</td>
+						</tr>
+						<tr>
+							<td>submitButtonText</td>
+							<td class="muted">string</td>
+							<td>text for the "submit" button (default : 'Submit')</td>
+						</tr>
+						<tr>
+							<td>submitButtonClass</td>
+							<td class="muted">string</td>
+							<td>class of the "submit" button (default : '')</td>
+						</tr>
+						<tr>
+							<td>debug</td>
+							<td class="muted">boolean</td>
+							<td>activate debug in console or not (default : false)</td>
+						</tr>
+						<tr>
+							<td>before</td>
+							<td class="muted">function</td>
+							<td>
+								before callback<br />
+								called just before the slide effect<br />
+								params : <span class="muted">(in right order)</span><br />
+								&nbsp;&nbsp;&nbsp;&nbsp;wizardObj : object of the wizard<br />
+								&nbsp;&nbsp;&nbsp;&nbsp;currentStepObj : object of the current step<br />
+								&nbsp;&nbsp;&nbsp;&nbsp;nextStepObj : object of the next step
+							</td>
+						</tr>
+						<tr>
+							<td>after</td>
+							<td class="muted">function</td>
+							<td>
+								after callback<br />
+								called just after the slide effect<br />
+								params : <span class="muted">(in right order)</span><br />
+								&nbsp;&nbsp;&nbsp;&nbsp;wizardObj : object of the wizard<br />
+								&nbsp;&nbsp;&nbsp;&nbsp;prevStepObj : object of the previous step<br />
+								&nbsp;&nbsp;&nbsp;&nbsp;currentStepObj : object of the current step
+							</td>
+						</tr>
+						<tr>
+							<td>beforeSubmit</td>
+							<td class="muted">function</td>
+							<td>
+								beforeSubmit callback<br />
+								called just before the form submit (if there is a form)<br />
+								params : <br />
+								&nbsp;&nbsp;&nbsp;&nbsp;wizardObj : object of the wizard<br />
+								default : <span class="muted">(check for HTML5 form validation error, and slide to the error if found)</span><br />
+<pre class="javascript">
+function(wizardObj) {
+	wizardObj.find('input, textarea').each(function() {
+		if(!this.checkValidity()) {
+			step = $(this).parents('.'+thisSettings.stepClassName).attr('data-step');
+			easyWizardMethods.goToStep.call(wizardObj, step);
+
+			return false;
+		}
+	});
+}			
+</pre> 
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</section>
+
+			<section id="extra">
+				<h2>Extra</h2>
+				<p class="well">
+					Cool, there is a little extra !<br />
+					You can call the plugin directly to make your own controls (and buttons).
+				</p>
+<pre class="javascript">
+// Slide to a step
+$('#myWizard').easyWizard('goToStep', 2);
+
+// Slide to the previous step
+$('#myWizard').easyWizard('prevStep');
+
+// Slide to the next step
+$('#myWizard').easyWizard('nextStep');
+</pre>
+			</section>
+		</div>
+
+		<footer>
+			Developed and maintained by <a href="http://www.stephane-litou.com" title="Stephane Litou - Lead dev">St&eacute;phane Litou</a>
+		</footer>
+
+		<a href="https://github.com/st3ph/jquery.easyWizard"><img style="position: fixed; top: 0; right: 0; border: 0; z-index: 9999;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/jquery.snippet.min.js"></script>
+		<script src="js/jquery.easyWizard.js"></script>
+		<script src="js/scripts.js"></script>
+		<script>
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		  ga('create', 'UA-48513216-4', 'st3ph.github.io');
+		  ga('send', 'pageview');
+
+		</script>		
+	</body>
+</html>
