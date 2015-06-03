@@ -1,8 +1,8 @@
 /* ========================================================
- * easyWizard v1.1.1
+ * easyWizard v1.1.2
  * http://st3ph.github.com/jquery.easyWizard
  * ========================================================
- * Copyright 2012 - 214 Stéphane Litou
+ * Copyright 2012 - 2014 Stéphane Litou
  * http://stephane-litou.com
  *
  * Dual licensed under the MIT or GPL Version 2 licenses.
@@ -130,7 +130,7 @@
             thisSettings = arrSettings[this.index()];
             $activeStep = this.find('.'+ thisSettings.stepClassName +'.active');
             if($activeStep.prev('.'+thisSettings.stepClassName).length) {               
-                prevStep = parseInt($activeStep.attr('data-step')) - 1;
+                prevStep = parseInt($activeStep.prev().attr('data-step'));
                 easyWizardMethods.goToStep.call(this, prevStep);
             }
         },
@@ -138,7 +138,7 @@
             thisSettings = arrSettings[this.index()];           
             $activeStep = this.find('.'+ thisSettings.stepClassName +'.active');
             if($activeStep.next('.'+thisSettings.stepClassName).length) {
-                nextStep = parseInt($activeStep.attr('data-step')) + 1;
+                nextStep = parseInt($activeStep.next().attr('data-step'));
                 easyWizardMethods.goToStep.call(this, nextStep);
             }
         },
