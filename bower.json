@@ -1,6 +1,6 @@
 {
   "name": "jquery.easywizard",
-  "version": "1.1.3",
+  "version": "1.1.4",
   "description": "easyWizard is a jQuery plugin who try to help you building fast and easy wizards for your website",
   "main": "lib/jquery.easyWizard.js",
   "dependencies": {
