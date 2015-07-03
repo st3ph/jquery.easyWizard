@@ -1,17 +1,31 @@
 {
-  "name": "jquery.easyWizard",
+  "name": "jquery.easywizard",
   "version": "1.1.3",
+  "description": "easyWizard is a jQuery plugin who try to help you building fast and easy wizards for your website",
   "main": "lib/jquery.easyWizard.js",
   "dependencies": {
     "jquery": ">=1.8"
   },
   "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
   ],
   "license": "MIT",
   "keywords": [
     "jquery",
-    "jquery plugin",
+    "jquery",
+    "plugin",
     "javascript",
-    "library"
-  ]
+    "library",
+    "wizard",
+    "easywizard",
+    "form"
+  ],
+  "authors": [
+    "Stephane Litou <contact@stephane-litou.com>"
+  ],
+  "homepage": "http://st3ph.github.io/jquery.easyWizard/"
 }
